@@ -1,0 +1,113 @@
+%-----------------------------------------------------------------------------%
+%- The Natural Numbers and Mathematical Induction ----------------------------%
+%-----------------------------------------------------------------------------%
+\chapter{Number Theory}
+\label{chap:NumberTheory}
+Discrete maths concerns itself with 2 main types of numbers:
+\begin{enumerate}
+  \item Natural numbers, $\mathbb{N}$
+  \item Integers, $\mathbb{Z}$
+\end{enumerate}
+
+\section{Integers}
+\begin{description}
+  \item[Notation] The set of integers is denoted by the symbol $\mathbb{Z}$
+  \item[Operations] $\mathbb{Z}$ can be added and multiplied.
+  \item[Closure Law for Addition]
+  \begin{align}
+    \forall a, b \in \mathbb{Z}, \exists c \in \mathbb{Z} \\
+    a + b = c
+  \end{align}
+  
+  \item[Associative Law for Addition]
+  \begin{align}
+    a + (b + c) & = (a + b) + c &
+  \end{align}
+  
+  \item[Special case: Zero]
+  \begin{align}
+    \exists 0 \in \mathbb{Z} \\
+    a + 0 & = 0 + a & = a
+  \end{align}
+  
+  \item[Inverse Law for Addition]
+  \begin{align}
+    \forall a \in \mathbb{Z}, & ~ \exists (-a) \in \mathbb{Z} \\
+    a + (-a) & = (-a) + a = 0
+  \end{align}
+  Theorem: Suppose $b \in \mathbb{Z}$ and $(a+b) = (b+c) = a$ then $b = 0$
+  \begin{align}
+             b + a & = a \\
+      (b+c) + (-a) & = a + (-a) \\
+    b + (a + (-a)) & = 0 \\
+             b + 0 & = 0 \\
+                 b & = a
+  \end{align}
+  Alternatively:
+  \begin{align}
+                 b & = b + 0 \\
+                   & = b + (a+(-a)) \\
+                   & = (b + a) + (-a) \\
+                   & = a + -(a) \\
+                   & = 0 
+  \end{align} \qedbitches
+  
+  \item[Closure Law for Multiplication]
+  \begin{align}
+    \forall a, b \in \mathbb{Z} & \Rightarrow \exists c \in \mathbb{Z} \\
+    a \times b & = c
+  \end{align}
+  
+  \item[Commutativity Law for Multiplication]
+  \begin{align}
+    (a \times b) & = (b \times a)
+  \end{align}
+  
+  \item[Associativity Law for Multiplication]
+  \begin{align}
+    (a \times b) \times c & = a \times (b \times c)
+  \end{align}
+  
+  \item[Identity for Multiplication]
+  \begin{align}
+    \exists 1 \in \mathbb{Z} & ~ | 1 \neq 0 \\
+    \forall a \in \mathbb{Z} & ~ (1 \times a) = a
+  \end{align}
+  
+  \item[Calculation Law for Multiplication]
+  \begin{align}
+  \text{If }       & a, b, c \in \mathbb{Z} ~ | a \neq 0 \\
+                   & (a \times b)     & = (a \times c) \Rightarrow (b = c) & \\
+  \text{Then, if } & d \in \mathbb{Z} \text{ \& } && \\
+                   & d \times a       & = (a \times d) = a \forall a & \\
+  \text{Then }     &&                 & \nonumber \\
+                   & d = 1            && \\
+  \text{Proof: }   & d = d \times 1   && \\
+                   &   = 1            &&
+  \end{align}
+  \item[Distributive Law for Multiplication]
+  \begin{align}
+    a(b+c) & = (ab) + (ac)
+  \end{align}
+\end{description}
+
+\section{Natural Numbers}
+\label{sec:NaturalNumbers}
+$\mathbb{Z}$ has a special subset called the natural numbers, $\mathbb{N}$
+with the following properties:
+\begin{description}
+  \item[Notation] The set of natural numbers is denoted by the symbol
+  $\mathbb{N}$. It imports almost all of the laws of addition and multiplication
+  with the following exceptions and properties
+  \item[Positive Only Numbers] If $a \in \mathbb{Z}$, exactly one of $(a \times
+  -a) \in \mathbb{N}$
+  \item[Closure] N is closed under addition or multiplication.\footnote{if you
+  add 2 natural numbers, you get a natural number, if you multiply natural numbers,
+  you get a natural number}.
+  \item[Zero] $0 \in \mathbb{N}$ by definition. ($0 \in \mathbb{Z}$ too)
+  \item[Add 1] If $S \subseteq \mathbb{N}$ and $\{0 \in S\}$ then
+  \begin{align}
+      \{ \text{If } a \in S \} \text{ then } a + 1 & = S \\
+      & \Rightarrow S = \mathbb{N}
+   \end{align}
+\end{description}

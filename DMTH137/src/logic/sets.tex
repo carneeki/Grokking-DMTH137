@@ -1,0 +1,156 @@
+%-----------------------------------------------------------------------------%
+%- Sets: Operation on Sets, Cartesian Products, Power Sets
+%-----------------------------------------------------------------------------%
+\section{Set Operations, Cartesian Products and Power Sets}
+\label{sec:Sets}
+
+``A \emph{set} is a bunch of stuff that we decide to lump together that we identify has some things in common.'' -- Fran Griffin.
+
+A set is denoted by curly braces.
+
+\begin{align}
+\intertext{is not a set:}
+  1, 2, 3, 4, 5 \\
+\intertext{is a set:}
+  \{1, 2, 3, 4, 5 \} \\
+\end{align}
+
+To say something is in a set:
+\begin{align}
+  x \in S \\
+  \intertext{is an element of S}
+\end{align}
+
+To say something is not in a set:
+\begin{align}
+  x \ni S \\
+\end{align}
+
+To say something (T) is a subset of a set (S):
+\begin{align}
+  T \subset S \\
+\end{align}
+
+What is a subset?
+
+Let: A, B be sets, we say  $A \subseteq B$ (A is a \emph{subset} of B) if $\forall x \in A$ we have $x \in B$
+ie every element of B is also an element of A
+
+Example:
+\begin{align}
+  T = \{ 1, 2, 3\}, T \subseteq S \\
+  T = \{ 2, 5 \}, T \subseteq S \\
+  T = \{ 3 \}, T \subseteq S \\
+  T = \{ 1, 2, 4, 7 \}, T \subset S \text{since $ T \ni S $}
+\end{align}
+Note: $\{3\} \subseteq S $, but $ 4 \in S $
+
+The \emph{empty set} ($\{\} = 0$) is a subset of S:
+Note: $\{0\}$ is \emph{not} the empty set, as it has one element of 0.
+$0 \in S, S \subseteq S$ \\ 
+Note:  $0 \ni S, S \ni S$ \\
+(ie, $S \in S$ is allowed, we can get into trouble with Russell's paradox)\\
+\\
+%[ \ldots [B] ] $ B \subseteq A $
+
+\subsection{Equality of Sets}
+\label{sec:EqualityOfSets}
+$(A = B) \leftrightarrow (( A \subseteq B) \land (B \subseteq A))$
+
+\emph{Cardinality}: ie size of a set, ie the number of elements
+
+$|A| = $ number of elements of A.\footnote{We use the ``absolute value'' symbols
+to determine the cardinality.}
+
+\begin{align}
+ |0| = 0 \\
+ |S| = 5 \\
+\end{align}
+
+Combining Sets:
+Let A, B be sets, $A \bigcup B$ is the set containing all the elements of both A and B.
+  $x \in A \bigcup B$ if $(( x \in A )) \lor (x \in B))$
+eg
+\begin{align}
+  S = \{ 1,2,3,4,5 \}. T = \{3, 6, 8\} \\
+  S \bigcup T = \{1,2,3,4,5,6,9\} \\
+\end{align}
+Note: expanded elements in a union are listed only once. Order is not important, eg:
+\begin{align}
+  \{1,2,3\} = \{2, 3, 1\} \\
+\end{align}
+
+Definition: Let A, B, be sets $A \bigcap B$ (read as ``A intersect B'') is the set
+of elements common to both A and B.\\
+\\
+$x \in A \bigcap B$ if $(( x \in A) \land (x \in B))$. \\
+eg \\
+$ S \{1,2,3,4,5\}, T = \{2, 4, 6, 8\}$ \\
+$ S \bigcap = \{2, 4\} $ \\
+% TODO: venn diagram of A \bigcap B
+% TODO: venn diagram of A \bigcup B
+
+$|A \bigcup B | = |A| + |B| - |A \bigcap B|$ \\
+
+\subsection{Universal Set}
+
+$\mathbb{N} = \{ 1, 2, 3, \ldots\} $ Natural Numbers.\footnote{Mathematicians can't decide whether zero is included or not}. \\
+$\mathbb{Z} = \{ -3, -2, -1, 0, 1, 2, 3 \} $ Integers. \\
+$\mathbb{Q} = \{ \frac{a}{b} | a, b, \in Z, b \neq 0$ Rational Numbers \\
+$\mathbb{R} = \{$ numbers that can be written as decimals $\}$. Real numbers. \\
+
+$\pi$, $\emph{e}$, etc\ldots are not rational, but are real.
+
+$\mathbb{N} \subseteq \mathbb{Z} \subseteq \mathbb{Q} \subseteq \mathbb{R} $ \\
+
+$|\mathbb{N}| = \infty$
+$|\mathbb{Z}| = \infty$
+$|\mathbb{Q}| = \infty$
+$|\mathbb{R}| = \infty$
+
+$|\mathbb{N}| = |\mathbb{Z}| = |\mathbb{Q}| < |\mathbb{R}|$ \\
+We can list the elements of $\mathbb{N}$ without missing any, 1, 2, 3, \ldots \\
+We can list the elements of $\mathbb{Z}$ in correspondance with elements of $\mathbb{N}:$
+
+% TODO: TeXorize this table:
+%
+% N: 1, 2,  3,  4,  5,  6,  7,  8,   9,  10, 11
+% Z: 0, 1, -1,  2, -2,  3, -3,  4,  -4,   5, -5
+%
+
+So the sizes of $\mathbb{N}$ and $\mathbb{Z}$ are the same. We can do this same for $\mathbb{Q}$
+(as an exercise). We cannot list the elements of $\mathbb{R}$ in correspondance with $\mathbb{N}$.
+
+To see this, suppose we have a list of all real numbers ($\mathbb{R}$):
+(where a, b, c, d, e, \ldots are decimal digits)
+%0 . a_1 b_1 c_1 d_1 e_1 \\ 
+%0 . a_2 b_2 c_2 d_2 e_2 \\
+%0 . a_3 b_3 c_3 d_3 e_3 \\
+%0 . a_4 b_4 c_4 d_4 e_4 \\
+%0 . a_5 b_5 c_5 d_5 e_5 \\
+% TODO: vertical 3dots
+But if we take one digit from each number in our list and change it then we have:
+%0. a_1^1 b_2^1 c_3^1 d_4^1 e_5^1
+
+Which differs form the $i^{th}$ number in my list at the $i^{th}$ digit. Hence, this
+number was not in the list.
+
+$|\mathbb{N}| = |\mathbb{Z}| = |\mathbb{Q}|$ is called \emph{``countable
+infinity''}. $|R|$ is \emph{``uncountable infinity''}.
+
+Universal Set $\epsilon$: \\
+Let $\epsilon = \mathbb{N}$ \\
+Let $S = \{1,2,3,4,5\}$ \\
+The complement of S:
+%TODO: S-bar
+$ -S = \{ x \in \mathbb{N} | x \ni S \} $
+
+%TODO: venn diagram of epsilon and S-bar
+
+$S = \{1,2,3,4,5\}$, $T = \{1,2\}$ \\
+$S \ T=\{3, 4, 5\}$ or $S - T = \{3, 4, 5 \}$ is read as ``complement of T is S'' \\
+$|S - T| = |S| - |S \bigcap T|$ \\
+eg \\
+$A = \{ x \subseteq \mathbb{Z} | x \geq 5 \}, B \{ x \subseteq \mathbb{Z} | x < 8 $
+$|A| = |B| = \infty$
+$|A \bigcap B | \{ x \subseteq \mathbb{Z} | (x \geq 5) \land (x < 8)\} = \{5,6,7\} $ 

@@ -1,0 +1,225 @@
+%-----------------------------------------------------------------------------%
+%- Laws of Logic
+%-----------------------------------------------------------------------------%
+\chapter{Laws of Logic}
+\label{sec:LawsOfLogic}
+
+\begin{align}
+  p \land q & 
+    & \equiv q \land p
+  \label{eq:Commut}
+\end{align}
+
+\begin{align}
+  p \land (q \land r) &
+    & \equiv (p \land q) \land r
+  \label{eq:Assoc}
+\end{align}
+
+\begin{align}
+  p \land p &
+    & \equiv p
+  \label{eq:Idemp}
+\end{align}
+
+\begin{align}
+  p \lor p &
+    & \equiv p
+  \label{eq:Idemp2}
+\end{align}
+
+\begin{align}
+  p \land (p \lor q) &
+    & \equiv p
+  \label{eq:Distrib}
+\end{align}
+
+\begin{align}
+  p \lor (p \land q) & \equiv p
+  \label{eq:Distrib2}
+\end{align}
+
+\begin{align}
+  p \land \mathbb{T} & \equiv p
+  \label{eq:IdentAND}
+\end{align}
+
+\begin{align}
+  p \lor \mathbb{F} & \equiv p
+  \label{eq:IdentOR}
+\end{align}
+
+\begin{align}
+  p \land \mathbb{F} & \equiv F
+  \label{eq:Annihil}
+\end{align}
+
+\begin{align}
+  p \lor \mathbb{T} & \equiv T
+  \label{eq:Annihil2}
+\end{align}
+
+\begin{align}
+  p \land \not p & \equiv \mathbb{F}
+  \label{eq:Inv1}
+\end{align}
+
+\begin{align}
+  p \lor \not p & \equiv \mathbb{T}
+  \label{eq:Inv2}
+\end{align}
+
+\begin{align}
+  -(p \land q) &
+    & \equiv -p \lor -q
+  \label{eq:deMorgan}
+\end{align}
+
+\begin{align}
+  -(p \lor q) &
+    & \equiv -p \land -q
+  \label{eq:deMorgan2}
+\end{align}
+
+\begin{align}
+  p \to q &
+    & \equiv -p \lor q
+  \label{eq:Impl}
+\end{align}
+
+\begin{align}
+  -(-p) &
+    & \equiv p
+  \label{eq:2Neg}
+\end{align}
+
+\begin{align}
+  p \leftrightarrow q
+    & \equiv (p \to q) \land (q \to p)
+  \label{eq:Equiv}
+\end{align}
+A more complete table of laws can be found on Wikipedia 
+%\footnote{
+%url{http://en.wikipedia.org/wiki/Propositional_logic#Basic_and_derived_argument_forms}}
+
+
+% TODO: provide some examples:
+Examples:
+$ p \land (p \lor q) \equiv p$
+  % TODO: this table
+
+Distributive:
+$ p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$
+  % TODO: this table
+
+De Morgan:
+$ -(p \land q) \equiv (-p \lor -q)$
+  % TODO: this table
+  
+Brackets, Negation, OR, AND
+
+Implication:
+$ (p \to q) \equiv (-p \lor q)$
+\begin{table}[!htb]
+\label{tab:TruthTableTautology}
+\begin{tabularx}{\linewidth}{| c | c | c | c | c |} \hline
+  $p$ & $q$ & $(p \to q)$ & $\equiv$ & $(-p \lor q)$ \\
+  0   &   0 &           T &          & \\
+  0   &   1 &           F &          & \\
+  1   &   0 &           F &          & \\
+  1   &   1 &           T &          & \\
+\end{tabularx}
+\end{table}
+
+We can use the laws of logic to simplify expressions (eg to process a
+conditional more efficiently). \\
+
+Example: simplify $(p \to q) \to r$ \\
+We know that:
+\begin{align}
+  (p \to q) \to r
+    & \equiv (-p \lor q) \to r       && \neqref{eq:Impl}\\
+    & \equiv -(-p \lor q) \lor r     && \neqref{eq:Impl}\\
+    & \equiv (-(-p) \land -q) \lor r && \neqref{eq:deMorgan}\\
+    & \equiv (p \land -q) \lor r     && \neqref{eq:deMorgan}\\
+\end{align}
+(recall that L10 = implication)
+
+Simplify $(p \to q) \to p$:
+\begin{align}
+ (p \to q) \to p
+   & \equiv (-p \lor q) \to p       && \neqref{eq:Impl}\\
+   & \equiv -(-p \lor q) \lor p     && \neqref{eq:Impl}\\
+   & \equiv (-(-p) \land -q) \lor p && \neqref{eq:deMorgan}\\
+   & \equiv (p \land -q) \lor p     && \neqref{eq:2Neg}\\
+   & \equiv p L4                    && \neqref{eq:IdentAnd}
+\end{align}
+
+Simplify $(p \lor -(-p \to q))$:
+\begin{align}
+  (p \lor -(-p \to q)) & \\
+       & \equiv p \lor -(-(-p) \lor q)         && \neqref{eq:Impl}\\
+       & \equiv p \lor -(p \lor q)             && \neqref{eq:2Neg}\\
+       & \equiv p \lor (-p \land -q)           && \neqref{eq:deMorgan}\\
+       & \equiv (p \lor -p) \land (p \lor -q)  && \neqref{eq:Distrib}\\
+       & \equiv (\mathbb{T}) \land (p \lor -q) && \neqref{eq:Inverse}\\
+       & \equiv (p \lor -q)                     && \neqref{eq:Identity}
+\end{align}
+
+By simplifying $p \to (q \to (p \land q)) $:
+%\begin{align}
+%  p \to (q \to (p \land q))
+%    & \equiv -p \lor (q \to (p \land q))      && \neqref{eq:Impl}\\
+%    & \equiv -p \lor (-q \lor (p \land q))    && \neqref{eq:Impl}\\
+%  \breaktext{something}
+%    & \equiv (-p \lor -q) \lor (p \land q)    && \neqref{eq:Assoc}\\
+%    & \equiv -(p \land q) \lor (p \land q)    && \neqref{eq:deMorgan}\\
+%    & \equiv \mathbb{T}\\
+%    & \therefore Tautology
+%\end{align}
+
+Show that $(p \lor q) \to r \equiv -r \to -(p \lor q)$:
+\begin{align}
+  (p \lor q) \to r & \equiv -r \to -(p \lor q) \\
+  \intertext{LHS:}
+  (p \lor q) \to r & \equiv - (p \lor q) \lor r      && \neqref{eq:Impl}\\
+  \intertext{RHS:}
+  -r \to -(p \lor q) & \equiv -(-r) \lor -(p \lor q) && \neqref{eq:Impl}\\
+    & \equiv r \lor -(p \lor q)                      && \neqref{eq:2Neg}\\
+    & \equiv -(p \lor q) \lor r                      && \neqref{eq:Assoc}\\
+    & \equiv LHS  
+\end{align}
+
+Simplify $ -(p \to (p \lor q)) $:
+\begin{align}
+  -(p \to (p \lor q)) & \\
+  & \equiv -(-p \lor (p \lor q))   && \neqref{eq:Impl}\\
+  & \equiv -((-p \lor p) \lor q)   && \neqref{eq:Assoc}\\
+  & \equiv -(\mathbb{T} \lor q)    && \neqref{eq:Inverse}\\
+  & \equiv -\mathbb{T} && \\
+  & \therefore \equiv \mathbb{F} && \\
+  & \therefore contradiction
+\end{align}
+
+Establish the contrapositive: $ (p \to q ) \equiv (-q \to -p)$
+\begin{align}
+  \intertext{LHS:}
+  p \to q & \equiv -p \lor q         && \neqref{eq:Impl}\\
+  \intertext{RHS:}
+  -q \to -p & \equiv -(-q) \lor (-p) && \neqref{eq:Impl}\\
+            & \equiv q \lor -p       && \neqref{eq:2Neg}\\
+            & \equiv -p \lor q       && \neqref{eq:Assoc}
+\end{align}
+
+Simplify $p \lor -(p \to -(q \land p))$:
+\begin{align}
+  p \lor -(p \to -(q \land p)) & \equiv p \lor -(p \to (-q \lor -p))
+                                          && \neqref{eq:deMorgan}\\
+  & \equiv p \lor -(-p \lor (-q \lor -p)) && \neqref{eq:Impl}\\
+  & \equiv p \lor -(-p \lor -q \lor -p )  && \neqref{eq:Assoc}\\
+  & \equiv p \lor -(-p \lor -p \lor -q)   && \neqref{eq:Commut}\\
+  & \equiv p \lor -(-p \lor -q)           && \neqref{eq:Idempotent}\\
+  & \equiv (-(-p) \land -(-q))            && \neqref{eq:deMorgan}\\
+  & \equiv p \lor (p \land q)             && \neqref{eq:2Neg}\\
+  \therefore & \equiv p                   && \neqref{eq:Absorb}
+\end{align}

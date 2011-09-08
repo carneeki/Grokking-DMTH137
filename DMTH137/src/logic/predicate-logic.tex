@@ -1,0 +1,169 @@
+%-----------------------------------------------------------------------------%
+%- Predicate Logic and Negation
+%-----------------------------------------------------------------------------%
+\section{Predicate Logic and Negation}
+\label{sec:PredicateLogicAndNegation}
+
+\subsection{Predicates vs Propositions}
+\label{sec:PredicatesVsPropositions}
+We want to construct propositions that are either tautologies (always true) xor
+contradictions (always false).
+
+Consider the argument:
+Let: \\
+$p: $ All even numbers are integers\\
+$q: $ 8 is even \\
+$r: $ 8 is an integer \\
+$(p \land q) \to r $
+The problem is, this is NOT a tautology. It is inadequate in describing the
+argument: \\
+``All even numbers are integers and 8 is even, therefore 8 is an integer.''
+
+Consider the argument: \\
+``Not all prime numbers are odd, so there is at least one prime that is not
+odd.''\\
+$p: $ all primes are odd \\
+$q: $ there is at least one non-odd prime \\
+$-p \to q$ almost describes the argument, but is inadequate as it is not always
+true.
+
+To combat the above problems we use \emph{predicate logic}. A predicate is a
+statement containing one or more variables. If values are assigned to all the
+variables in a predicate the resulting statement is a
+proposition.\footnote{Recall: a proposition is something we can decide the truth
+value of.}
+
+Example: $x < 5$. This is a predicate. Giving $x$ a value makes it a proposition
+such as $x = 3 (\mathbb{T})$ such that $3 < 5 (\mathbb{T})$. \\
+Consider the predicate $x < 5 \lor x \leq 5$ which is always true regardless of
+the value of x.
+We can form a proposition that is always $\mathbb{T}$:\\
+For all $x$, $x<5$ or $x \geq 5$. \\
+On the other hand \\
+For all $x$, $x < 5 \mathbb{F}$.\footnote{If we were to leave out the
+words ``for all'', the statement is sometimes true and sometimes false.}\\
+
+There exists an $x$ such that $x < 5 \mathbb{T}$.
+
+``For all'' and ``there exists'' are called \emph{quantifiers}. Two such
+quantifiers are:
+$\forall =$ ``for all''
+$\exists =$ ``there exists''
+
+Every number has a number larger than it.
+Every number: $\forall x$
+a number larger than x : y
+$\forall x, \exists y, y>x$
+For all x, there exists y, such that y > x.
+% \begin{align}
+%   $\forall x, (x < 5) \lor (x \geq 5)$ \\
+%   $\forall x, x < 5$ \\
+%   $\exists x, x < 5$
+%   \intertext{We can shorten (\emph{abstract}) this notation even more:}
+%   \text{Let} P(x): x < 5, Q(x): x \geq 5
+%   \intertext{Then we can write a), b), c) as:}
+%   \text{a)} \forall x, (P(x) \lor Q(x)) \\
+%   \text{b)} \forall x, P(x) \\
+%   \text{c)} \exists x, P(x) 
+% \end{align}
+
+Example: for every number x, there is another number $y$ such that $y = x + 1$.
+\begin{align}
+  \forall x, \exists y, y = x + 1 (\mathbb{T})
+  \intertext{ or }
+  \text{Let} P(x,y): y = x + 1 \text{and write} \\
+  \forall x \exists y, P(x,y)
+\end{align}
+
+Eg there is a number $y$ such that for every number $x$, $y = x + 1$
+\begin{align}
+  \exists y \forall x, y = x + 1 (\mathbb{F})
+\end{align}
+These above two examples show that the order in which we write the quantifiers \emph{is important}.
+
+Example: In a system for booking theatre seats, $B(p,s)$ is the predicate ``person $p$ has booked
+seat $s$'', which in symbolic form: \\
+% \begin{align}
+%   \texttext{``seat s has been booked'' :} \\
+%     \exists p, B(p,s) \\
+%   \text{``person p has booked a seat:''} \\
+%     \exists s, B(p,s) \\
+%   \text{``All seats are booked:``} \\
+%     \forall s, B(p,s) \\
+%   \text{``No seat is double booked:`` \\ another way to write this is ``No seat is booked by
+%   both person $p$ and person $q$:''} \\
+%     \forall s \forall p \forall q ((B(p,s) \lor B(q,s)) \to (p \equiv q))
+% \end{align}
+
+Example: ``All swans are black.\footnote{We have some white swans, hence false}'' $\mathbb{F}$
+% \begin{align}
+%   \text{Let} P(x): $swan s is black$
+%   \forall s, P(s) \\
+%   \text{Not all swans are black} \\
+%   -\forall s, P(s) \equiv \exists s, -P(s) \\
+%   \text{ie, there is at least one non-black swan.} 
+% \end{align}
+
+Example: ``There is a number $x$ such that $x^{2} = 2$.
+\begin{align}
+  \text{Let} P(x): x^{2} & = 2 \\
+  \exists x, x^{2} & = 2 (\mathbb{T})
+\end{align}
+
+``Negation: There is no number who's square is 2.'' We can easily negate it
+\begin{align}
+  -(\exists x, x^{2} & = 2 )
+  \intertext{But we could do better, rewrite as ``ever number doesn't square to 2''}
+  \forall x, -(x ^{2} = 2) & \equiv \forall x, x^{2} \neq 2 (\mathbb{F})
+\end{align}
+
+\subsection{Negation}
+\label{sec:Negation}
+
+Consider the proposition: $\forall x \exists y, y < x$ \\
+Negation will \emph{invert}, \emph{reverse}, or \emph{set opposite to} and is denoted by a minus symbol
+in these notes. 
+\begin{align}
+  -(\forall x \exists y, y < x) & \equiv \\
+  & \equiv \exists x - (\forall x \exists y, y < x) \\
+  & \equiv \exists x \forall y, -(y < x) \\
+  & \equiv \exists x \forall y, y \geq x \mathbb{F} 
+  \intertext{Which means ``there is a number $x$ that is smaller than every number $y$.'' ($\mathbb{F}$)}\end{align}
+
+Construct the statement: ``Not all prime numbers are odd.'' ($\mathbb{T}$). \\
+This means ``There is at least one prime that is not add.'' \\
+\begin{align}
+  \text{Let} P(x): & \text{``x is a prime number''} \\
+  \text{Let} Q(x): & \text{``x is odd''}
+  \intertext{To say ``all primes are odd''}
+  &  \forall x, P(x) \to Q(x)
+  \intertext{To say ``not all primes are odd''}
+  & - (\forall x, P(x) \to Q(x) ) \\
+  & \equiv \exists x, -P(x) \to Q(x)) \\
+  & \equiv \exists x, -(-P(x)) \lor Q(x)) \\
+  & \equiv \exists x, (--P(x) \lor -Q(x)) \\
+  & \equiv \exists x, (P(x)) \lor -Q(x))
+  \intertext{which means: ``There is a number $x$ such that $x$ is prime but $x$ is not odd.'' (T)} 
+\end{align}
+
+Example: Negate $\forall x \exists y(y<x) \lor (x$ is odd $)$:
+\begin{align}
+  -(\forall x \exists y (( y < x) \lor (x \text{is odd}))) & \\
+  & \equiv \exists x, -(\exists y (( y < x) \lor (x \text{is odd}))) \\
+  & \equiv \exists x \forall y -(( y < x) \lor (x \text{is odd})) \\
+  & \equiv \exists x \forall y (-(y<x) \land (x \text{is odd})) \\
+  & \equiv \exists x \forall y (-(y<x) \lor -(x \text{is odd})) \\
+  & \equiv \exists x \forall y (( y\geq x) \lor (x \text{is even})) \text{($\mathbb{T}$)}
+\end{align}
+
+Example: Negate: $\exists x \forall y, (( y=3x) \to (y \geq x))$:
+\begin{align}
+  (\exists x \forall y, (( y=3x) \to (y \geq x)) ) & \equiv \\
+   & \equiv - (\exists x \forall y, (( y=3x) \to (y \geq x))) \\
+   & \equiv \exists x -(\forall y, (( y=3x)  \to (y \geq x))) \\
+   & \equiv \exists x \forall y, (-((y=3x) \to (y \geq x))) \\
+   & \equiv \exists x \forall y, (-(-(y=3x) \lor (y \geq x))) \\
+   & \equiv \exists x \forall y, (( -- (=3x) \land -(y \geq x))) \\
+   & \equiv \exists x \forall y, ((( y = 3x) \land -(y \geq x))) \\
+   & \equiv \exists x \forall y, (( y = 3x)) \land (y<x)) \text{($\mathbb{F}$)}
+\end{align}

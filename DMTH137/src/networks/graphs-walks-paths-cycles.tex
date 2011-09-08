@@ -1,0 +1,310 @@
+%-----------------------------------------------------------------------------%
+%- Networks :: Walks, Paths and Cycles ---------------------------------------%
+%-----------------------------------------------------------------------------%
+\chapter{Paths and Circuits}
+\label{sec:WalksPathsCircuits}
+
+There are two types of paths and circuits we concern ourselves with, Euler and
+Hamilton. An Euler path (or circuit) is one which crosses edges. A Hamilton path
+cross vertices.
+
+\section{Eulerian Paths and Circuits}
+An Euler \emph{path} is a path in a graph which includes every edge. An Euler
+\emph{circuit} is an Euler path which begins and ends at the same vertex.
+
+There are some rules concerning whether a graph has Eulerian Paths and Cycles:
+\begin{enumerate}
+  \item A connected multigraph with at least $2$ vertices has an Euler circuit
+  iff each of its vertices has even degree.
+  \item A connected multigraph has an Euler path but \emph{not} an Euler circuit
+  iff it has exactly $2$ vertices of odd degree.
+\end{enumerate}
+
+Can an Euler path be found on the diagram (fig
+\ref{fig:SevenBridgesKonigsberg}) of ``The 7 Bridges of Konigsberg''?
+
+\begin{figure}[!hbt]
+\label{fig:SevenBridgesKonigsberg}
+\begin{tikzpicture}[node distance   = 4 cm]
+  \useasboundingbox (-1,-1) rectangle (11,11); 
+  \tikzset{VertexStyle/.style = {shape          = circle,
+                                 ball color     = orange,
+                                 text           = black,
+                                 inner sep      = 2pt,
+                                 outer sep      = 0pt,
+                                 minimum size   = 24 pt}}
+  \tikzset{EdgeStyle/.style   = {thick,
+                                 double          = orange,
+                                 double distance = 1pt}}
+  \tikzset{LabelStyle/.style =   {draw,
+                                  fill           = yellow,
+                                  text           = red}}
+     \node[VertexStyle](A){A};
+     \node[VertexStyle,right=of A](B){B};
+     \node[VertexStyle,right=of B](C){C};
+     \node[VertexStyle,above= 8 cm of B](D){D};     
+     \draw[EdgeStyle](B) to node[LabelStyle]{1} (D) ;
+     \tikzset{EdgeStyle/.append style = {bend left}}
+     \draw[EdgeStyle](A) to node[LabelStyle]{2} (B);
+     \draw[EdgeStyle](B) to node[LabelStyle]{3} (A);
+     \draw[EdgeStyle](B) to node[LabelStyle]{4} (C);
+     \draw[EdgeStyle](C) to node[LabelStyle]{5} (B);
+     \draw[EdgeStyle](A) to node[LabelStyle]{6} (D);
+     \draw[EdgeStyle](D) to node[LabelStyle]{7} (C);
+  \end{tikzpicture}
+  \caption{The Seven Bridges of Konigsberg, cf:
+  \url{http://www.texample.net/tikz/examples/bridges-of-konigsberg/}}
+\end{figure}
+
+\emph{No}. The number of times you enter a circuit equals the number of times
+you leave. Each time you enter, you use a different edge. If you enter a vertex
+twice, you would have to have used that same entrance twice. Every time you
+leave, it is via a different and unused edge.
+
+\section{Hamilton Paths and Circuits}
+A Hamilton path passes through every vertex exactly once. A Hamilton circuit
+passes through every vertex exactly once and ends at the starting vertex (the
+only vertex which can be visited twice).
+
+\section{Minimal Spanning Trees}
+A spanning tree in a connected weighted graph with the smallest total weight.
+
+\subsection{Kruskal's Algorithm}
+Kruskal's algorithm works by using the smallest weight of each edge each time.
+
+First: Create 3 lists:
+\begin{enumerate}
+  \item All edges in order of increasing weight
+  \item edges in tree (initially empty)
+  \item current connected components
+\end{enumerate}
+
+Remainder of algorithm runs as follows:
+\begin{itemize}
+  \item Transfer the lowest weight edge from (1) to (2).
+  \item Add the vertices at the edge to the appropriate connected component in (3).
+  \item Remove from list (1) any edges which join vertices in the same connected component in (3).
+  \item Repeat until list (1) is empty.
+  \item List (2) contains your minimal tree.
+\end{itemize}
+
+% TODO: include photos
+
+\subsection{Prim's Algorithm}
+Prim's algorithm smoothes over the details by being ``not so greedy''.
+
+3 Lists; similar to Kruskal's lists.
+\begin{enumerate}
+  \item All edges in order of increasing weight.
+  \item edges in tree (initially empty).
+  \item Vertices included so far (start with any one vertex).
+\end{enumerate}
+
+\begin{itemize}
+  \item Transfer the lowest weight edge in list (1) to list (2) which has 1 end
+  in list (3) and at the other end of this edge to list (3).
+  \item Remove any edge from list (1) which join this new vertex in list(3) to any of other vertices in list(3).
+  \item Repeat until list(1) empty.
+\end{itemize}
+
+% TODO: include photos
+
+\section{Chromatic Polynomial - Colouring Graphs}
+\label{sec:ColouringGraphs}
+The chromatic polynomial deals with colouring graphs so that adjacent vertices
+have different colours (yes, pull out crayons!).
+
+Suppose you wanted to draw up the university timetable. We must ensure that no
+student is attending two units at the same time. Consider the graph where the
+vertices are the units and two vertices are joined if they have a student in
+common.
+
+% TODO scan in diagram
+Can I colour the vertices of this graph such that no two adjacent edges have
+the same colour?
+
+(Each colour represent a student, and is also indicative of how many
+timetable slots are necessary).
+
+Given a graph $G_1$, how many different ways can it be coloured in $K$ colours
+so that no two adjacent edges have the same colour?
+
+There is a polynomial that tells us the answer called the \emph{chromatic
+polynomial}.
+
+eg (Triangle in TODO). 
+$K_3$ using 4 colours.
+% Triangle: K=4; use an equilateral triangle
+
+There are 4 different ways to colour the top vertex, 3 different ways to
+colour the next, and 2 for the right next after that.
+\begin{align}
+  4 \times 3 \times 2 & = 24
+\end{align}
+
+$K_3$ using 6 colours: 
+\begin{align}
+  6 \times 5 \times 4 & = 120
+\end{align}
+
+$K_3$ using $k$ colours:
+\begin{align}
+  k \times (k-1) \times (k-2) & = \ldots \\
+  & = k^{3} - 3k^{2} + 2k
+\end{align}
+This is called the \emph{chromatic polynomial for $K_3$}.
+
+% TODO: triangular wheel
+$K_4$ using 4 colours:
+\begin{align}
+  4 \times 3 \times 2 \times 1 & = 24
+\end{align}
+
+$K_4$ using $k$ colours:
+\begin{align}
+  k \times (k-1) \times (k-2) \times (k-3) & = \ldots \\
+  & = k^{4} - 6k^{3} + 11k^{2} - 6k
+\end{align}
+\emph{Chromatic polynomial for $K_4$}
+
+At this point the chromatic polynomial for $n$ vertices with $K_n$ colours:
+\begin{align}
+  P(k) = k \times (k-1) \times (k-2) \times \ldots \times (k-n+1) & = \ldots
+\end{align}
+
+\subsection{Unconnected Vertices in a Coloured Graph}
+\label{sec:UnconnectedVerticesInAColouredGraph}
+Unconnected vertices can be coloured $K$ times as they are not joined to another
+vertex, so we don't worry about what colour we give them.
+
+% 3 vertices no edges (triangle no lines)
+3 vertices no edges (triangle no lines)
+\begin{align}
+  P(k) = k^{3}
+\end{align}
+
+4 vertices:
+\begin{align}
+  P(k) = k^{4}
+\end{align}
+
+$n$ vertices:
+\begin{align}
+  P(k) = k^{n}
+\end{align}
+
+\subsection{Trees in Coloured Graphs}
+\label{sec:TreesInColouredGraphs}
+The chromatic polynomial for any tree on $n$ vertices is
+\begin{align}
+  k \times (k-1)^{n-1} & = \ldots
+\end{align}
+
+Square:
+
+Question: How can I count the number of ways in the case of a square? Just multiplying
+won't work because 2 edges will sometimes be
+4 3
+3 ?
+
+and others
+
+A  B
+4  3
+2  ?
+C  D
+
+Dependent on the different colours chosen.
+
+Answer: We need a clever idea, like, removing an edge:
+A  B
++---
+|
++---
+C  D
+
+This is now a tree, and not the original graph; however, the answer here might help us.
+This tree can be coloured in $k(k-1)^{3}$ different ways with $k$ colours.
+
+Colourings where C and D are different are valid colourings for our square. 
+
+For graphs who's C and D have the same colour; will be valid colourings for
+
+% TODO: triangle
+
+These are $k(k-1)(k-2)$.
+
+So
+\begin{align}
+  P(k) & = k(k-1)^{3} - k(k-1)(k-2) \\
+  & = (k-1)(k-1)^{2}k - k((k-2)) \\
+  & = \ldots
+\end{align}
+
+So for example square:
+\begin{align}
+  5 \times 4^{3} - 5 \times 4 \times 3
+  \intertext{with 5 colours}
+  5 \times 64 - 5 \times 12 & = 5 \times \ldots \times 260
+\end{align}
+
+\emph{Notion 1:} So far we have the notion that the answer can be determined from a polynomial
+we can compute.
+
+\emph{Fact 1:} A graph with $n$ vertices and no edges can be coloured in $k^{n}$
+ways.
+
+\emph{Notion 2:} We can reduce the problem of colouring a graph $G$
+to a problem involving graphs with fewer edges. \emph{But how?}\\
+\\
+Consider a graph, $G$ with an edge between vertices A and B (and all sorts of
+other edges and vertices). Now consider two graphs formed from $G$, $G_-$ and
+$G_=$.\\
+\\
+$G_-$ is $G$ without the edge AB. \\
+$G_=$ is $G$ with edge AB combined into the output (same old edges in it's
+output)\\
+\\
+Notice that a colouring of the graph $G_-$ can either have AB with different
+colours, \emph{XOR} AB with the same colour.\\
+\\
+In first case, we can use the same colouring to colour $G$. In the second case,
+edge AB are the same colour, it doesn't matter if A and B are the same colour. \\
+\\
+This gives rise to \emph{Fact 2:}, the number of ways to colour $G_-$  = 
+the number of ways to colour $G$ = the number of ways to colour $G_=$.
+
+\# ways to colour $G$ = \# ways to colour $G_- - $ \# ways to colour $G_=$, or
+more mathematically:
+\begin{align}
+  P_G(k) & = P_{G_-}(k) - P_{G_=}(k)
+\end{align}
+
+%G = house
+%      A
+%    B   C
+%    D   E
+% now remove ceiling and merge BC into same point:
+%
+%      A
+%      BC
+%   D    E
+%
+% now remove BD
+%
+%      A
+%     BD  C
+%         E
+%
+% now remove CE
+%
+%      A
+%     BD  CE
+
+% Polynomials:
+% -> Triangle:
+%    $k(k-1)(k-2)$
+%    (now factorize)
+% -> Tree:
+%    $k(k-1)(k-1)(k-1)$
+%    (now factorize)

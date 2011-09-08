@@ -1,0 +1,244 @@
+%-----------------------------------------------------------------------------%
+%- Logic :: Propositional Logic and Truth Tables
+%-----------------------------------------------------------------------------%
+\section{Propositional Logic and Truth Tables}
+\label{sec:PropositionalLogicAndTruthTables}
+
+A proposition is a statement that is either true or false.
+
+``It is Thursday'' is a statement, which may be true or false depending on the
+day.
+``Pigs can fly'' is a statement, which is most likely false unless something odd
+is done to the pig.
+$2 + 3 = 5$ is a statement which turns out to be true (T).
+$2 + 3 = 7$ is a statement which turns out to be false (F).
+$ -3 < 7  $ (T)
+$\frac{5}{4} > \frac{6}{5}$ (T)
+
+Some things which are not propositions:
+\begin{itemize}
+  \item ``Go away.'' is a statement, but cannot be resolved to a true or false
+  value. ``Because it's Monday''. This is only a sentence fragment 
+  \item $ x + y $
+  \item ``I am lying.'' is a paradox. If you actually are lying, then the
+  statement is true and thus no longer a lie (and hence the truth). Paradoxes come about due to
+the notion of ``self-reference''.
+  \item ``This sentence is false'' is another example. Interestingly though,
+  ``This sentence is true'' is not a paradox.
+  \item ``Nothing is true'' is another paradox \footnote{and is an oft used
+  topic in post-modernism, but that's arts topic and best left to people who
+  belong in Y3A}.
+  \item Russell's Paradox
+\end{itemize}
+
+Most things that we want to say contain more than a single idea so we must
+combine, so we must combine propositions in some way.
+
+Propositions are often represented by the letters p and q. They can be combined
+using things called ``connectives'' like:
+\begin{itemize}
+  \item and
+  \item or
+  \item not
+  \item xor
+  \item xnor
+  \item implies
+  \item iff (if and only if)
+  \item equivalent
+\end{itemize}
+
+Let ``p'' be the statement ``I like tea'' and ``q'' be the statement ``I like
+coffee''.
+
+If I wanted to say: ``I like tea and coffee'': $p \land q$
+If I wanted to say: ``I like tea or coffee'': $p \lor q$
+If I wanted to say: ``I like tea but not coffee'': $p \land \lnot q$
+``I don't like tea or coffee'' can be written two ways: $ -(p \lor q)$ or $\lnot p
+\land \lnot q $
+
+Let ``p'' be the statement ``It is raining.''
+Let ``q'' be the statement ``I need an umbrella.''
+
+If it is raining, then I need an umbrella:
+
+$ p \to q $
+
+ie, the fact that it is raining implies that I need an umbrella.
+
+If it is not raining, so I don't need an umbrella.
+
+$ \lnot p \to \lnot q $
+
+What about $q \to p$?
+This says: ``If I need an umbrella, then it is raining.'' This is not
+necessarily true as there may be many uses for an umbrella besides keeping rain
+off\footnote{eg an umbrella salesman or as a parachute}.
+
+Let ``p'' be the statement ``he is vegetarian''
+Let ``q'' be the statement ``he eats no meat''
+
+He is vegetarian if and only if he eats no meat.
+
+$ p \iff q \equiv (p -> q) \land (q -> p)$
+This establishes equivalence between proposition p and q.
+
+
+Conjunction $p \land q$ is true only when both p,q are true.
+\begin{table}[!htb]
+\label{tab:TruthTableAND}
+\begin{tabularx}{\linewidth}{| c | c | X |} \hline
+  p & q & $(p \land q)$ \\ \hline \hline
+  F & F & F \\ \hline
+  F & T & F \\ \hline
+  T & F & F \\ \hline
+  T & T & T \\ \hline
+\end{tabularx}
+\caption{Truth Table: logical AND}
+\end{table}
+
+Disjunction $p \lor q$ is true when at least one of p,q are true:
+\begin{table}[!htb]
+\label{tab:TruthTableOR}
+\begin{tabularx}{\linewidth}{| c | c | X |} \hline
+  p & q & $(p \lor q)$ \\ \hline \hline
+  F & F & F \\ \hline
+  F & T & T \\ \hline
+  T & F & T \\ \hline
+  T & T & T \\ \hline
+\end{tabularx}
+\caption{Truth Table: logical OR}
+\end{table}
+
+Negation $\lnot p$ is true when $p$ is false
+\begin{table}[!htb]
+\label{tab:TruthTableNOT}
+\begin{tabularx}{\linewidth}{| c | X |} \hline
+  p & $(\lnot p)$ \\ \hline \hline
+  F & T \\ \hline
+  T & F\\ \hline
+\end{tabularx}
+\caption{Truth Table: logical NOT}
+\end{table}
+
+Conditional $p \to q$ if p then q, or ``p implies q''. This is false when
+$p$ is true and $q$ is false with a default condition of true.
+
+\begin{table}[!htb]
+\label{tab:TruthTableIMPLIES}
+\begin{tabularx}{\linewidth}{| c | c | X |} \hline
+  p & q & $(p \to q)$ \\ \hline \hline
+  F & F & T \\ \hline
+  F & T & T \\ \hline
+  T & F & F \\ \hline
+  T & T & T \\ \hline
+\end{tabularx}
+\caption{Truth Table: logical IMPLIES}
+\end{table}
+
+A plain English example: It can't rain when there are no clouds, so ``if it is
+raining then it is not cloudy'' is false.
+
+Suppose it isn't raining, it could still be cloudy. This remains true.
+
+Converse $q \to p$
+\begin{table}[!htb]
+\label{tab:TruthTableCONVERSE}
+\begin{tabularx}{\linewidth}{| c | c | X |} \hline
+  p & q & $(q \to p)$ \\ \hline \hline
+  F & F & - \\ \hline
+  F & T & - \\ \hline
+  T & F & - \\ \hline
+  T & T & - \\ \hline
+\end{tabularx}
+\caption{Truth Table: logical CONVERSE}
+\end{table}
+
+If it is cloudy then it is raining (not always true).
+q->p is NOT the same as $p -> q$
+
+Contrapositive $\lnot p -> \lnot q$
+Use to establish the notion of ``proof by contradiction''.
+
+Double conditional $ p \equiv q $
+p if and only if q: p iff q
+$p \to q$ and $q \to p$ must both be true
+That is $(p \equiv q) \equiv (( p \to q) \land (q \to p))$
+
+\begin{table}[!htb]
+\label{tab:TruthTableEQUIVALENCE}
+\begin{tabularx}{\linewidth}{| c | c | X |} \hline
+  p & q & $( p \equiv q ) \equiv (( p \to q) \land (q \to p))$
+                                                    \\ \hline \hline
+  F & F & F \\ \hline
+  F & T & F \\ \hline
+  T & F & F \\ \hline
+  T & T & T \\ \hline
+\end{tabularx}
+\caption{Truth Table: logical DOUBLE CONDITIONAL}
+\end{table}
+
+eg let p: 4 is an even number
+       q: 4 is divisible by 2
+       p and q clearly mean the same thing.
+       
+Exclusive or (xor) $p \lxor q$
+This is true when either p,q is true, but not both.
+
+\begin{table}[!htb]
+\label{tab:TruthTableXOR}
+\begin{tabularx}{\linewidth}{| c | c | X |} \hline
+  p & q & $( p \lxor q )$ \\ \hline \hline
+  F & F & F \\ \hline
+  F & T & T \\ \hline
+  T & F & T \\ \hline
+  T & T & F \\ \hline
+\end{tabularx}
+\caption{Truth Table: logical XOR}
+\end{table}
+
+How large should you make your truth table?
+\begin{enumerate}
+  \item For every variable we have 2 possible values: True and False.
+  \item If we have n propositions we need ${2}^{n}$ rows in the truth table.
+\end{enumerate}
+For example, if we have the variables $p,q,r$ then we need ${2}^{3} = 8$ rows.
+
+% TODO: fix order of operations
+
+Order of operations:
+
+\begin{enumerate}
+  \item Do OR connectives
+  \item Do AND connectives
+\end{enumerate}
+
+
+Two expressions are logically equivalent if their truth values match for every
+combination of the truth values of their atomic propositions\footnote{an atomic
+proposition is a proposition cannot be broken down any further}. This is the
+same as saying the expressions have the same truth tables.
+
+We want to show $p \land (q \lor r) \equiv ( (p \land q) \lor (p \land r) )$:
+\begin{enumerate}
+  \item Build truth table. We need 8 rows.
+\end{enumerate}
+
+Tautology: In ordinary language it is when you use redundant words which are
+unnecessary \footnote{This explanation in itself is a tautology where redundant
+and unnecessary mean the same thing}. A tautology is always true. The opposite
+of a tautology is a contradiction; which is always false.
+
+Tautology example: $p <-> q $ iff 
+
+\begin{table}[!htb]
+\label{tab:TruthTableTautology}
+\begin{tabularx}{\linewidth}{| c | c | c | c | X |} \hline
+  $p$ & $q$ & $(p \land q) $ & $ \equiv $ & $ (\lnot p \lor \lnot q) $
+                                                      \\ \hline \hline
+   F  &  F  &               &       &                 \\ \hline
+   F  &  F  &               &       &                 \\ \hline
+   F  &  F  &               &       &                 \\ \hline
+   F  &  F  &               &       &                 \\ \hline
+\end{tabularx}
+\caption{Truth Table: Tautology}
+\end{table}

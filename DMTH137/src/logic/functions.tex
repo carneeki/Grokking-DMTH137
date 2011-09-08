@@ -1,0 +1,374 @@
+%-----------------------------------------------------------------------------%
+%- Functions: Injectivity, Surjectivity, Invertibility -----------------------%
+%-----------------------------------------------------------------------------%
+\chapter{Functions: Injectivity, Surjectivity, Invertibility}
+\label{sec:Functions}
+
+\section{Function Basics}
+\label{sec:FunctionBasics}
+Suppose we have the following function:
+\begin{align}
+  f:A \to B
+  \label{eq:FunctionForm}
+\end{align}
+\begin{table}[!hbt]
+\label{tab:ComponentsToAFunction}
+\begin{tabularx}{\linewidth}{| l X |}
+  \hline
+  \multicolumn{2}{|l|}{Where:} \\
+  \hline \hline
+  $A:$ & represents the \emph{domain} (input set) \\
+  $B:$ & represents the \emph{codomain} (output set) \\
+  \multicolumn{2}{|l|}{The range $f \subseteq B$ is the actual output.} \\
+  \hline
+\end{tabularx}
+\caption{Components to a function}
+\end{table}
+Everything in A \emph{must} be connected to everything in B. \\
+\\
+Example: suppose $A = \{1, 2, 3\}$ and $B = \{p,q\}$. \\
+\begin{align}
+  f & : A \to B \nonumber \\
+  f(1) & = p \nonumber \\
+  f(2) & = q \nonumber \\
+  f(3) & = q \nonumber \\
+\end{align}
+We say the domain of $f$ is $\{1, 2, 3\}$, the co-domain $f=\{p,q\}$. range $f=\{p,q\}=B$.
+This function is a little bit special because the codomain and the range are the same, but
+this may not happen all the time.\\
+\\
+Example, suppose $A = \{1, 2, 3\}$, $B = \{a, b, \ldots, z\}$. \\
+\begin{align}
+  f & : A \to B \nonumber \\
+  f(1) & = q \nonumber \\
+  f(2) & = c \nonumber \\
+  f(3) & = k \nonumber \\
+\end{align}
+Domain $f = \{1, 2, 3\} = A$, codomain $f = B = \{a,b,\ldots,z\}$, the range is only
+$f = \{c, k, q\} \subseteq B$.\footnote{Sometimes the range is also called the \emph{image}.} \\
+\\
+Sometimes we say \emph{image f} to mean \emph{range f}: \\
+range f = im f = $\{y \in B | f(x) = y$, for some $x \in A\} \subseteq B$. \\
+\\
+%TODO: right align the following comment
+TODO in comments.\\
+%$f: \mathbb{Z} \to {0,1}, f(x) = 0$ % 0 if x is even
+%                                    % 1 if x is odd
+\begin{align}
+  f: \mathbb{Z} \to {0,1}, f(x) =
+    \left\{
+      \begin{array}{l l}
+        0 & \quad \text{if $x$ is even} \\
+        1 & \quad \text{if $x$ is odd} \\
+      \end{array}
+    \right.
+\end{align}
+\\
+(This is sometimes called $f(x) = x$ mod $2$.)\\
+\\
+Domain $f = \mathbb{Z}$, codomain $f = \{0,1\}$, range $f = \{0,1\}$.\\
+\\
+The functions $f: A\ to B$, $g: A \to B$ are equal iff $f(x) = g(x) \forall x \in A$.\\
+\\
+%TODO: xypic the following
+\\
+% .  ==> a      . ==> a
+% .  ==> b      . ==> b
+% .  ==> c      . ==> c
+% A      B      A     C
+\\
+They might look the same, but they are NOT the same because they have different codomains.
+(See xypic in TODO).
+\\
+Another example: \\
+\\
+$f:$ DMTH137 $\to$ X5B.T1 \\
+\\
+$f(p) = s$, when $p \in $ DMTH137 is a student. \\
+$s \in $ X5B.T1 is a seat. \\
+\\
+domain $f = \{$DMTH137 Students $\}$. \\
+codomain $f = \{$seats in X5B.T1 $\}$. \\
+range $f = \{$ occupied seats $\}$. \\
+
+-----
+$\phi : \mathbb{R} \to \mathbb{R}$, $\phi(x) = x^2$ \footnote{$\phi$ is greek letter phi} \\
+$\phi(0) = 1$, $\phi(1) = 4$, $\phi(3) = 9$, $\phi(4) = 16$ \ldots \\
+
+% TODO graph y = x^2
+TODO: diagram \\
+----- \\
+What about $\psi: \mathbb{R}^{+} \to \mathbb{R}$ \footnote{$\psi$ is greek letter psi}.
+\begin{align}
+  \psi(x) & = \sqrt{x} && \mathbb{R}^{+} = \{x \in \mathbb{R} | x > 0 \} \nonumber \\
+  \psi(1) & = \pm 1 \
+  \psi(4) & = \pm 2 \
+  \psi(9) & = \pm 3 \
+\end{align}
+This is not a function since we have 2 outputs for each input:
+
+% TODO diagram, y = x ^2 (but rotated cw 90 deg)
+TODO: diagram \\
+We can make this into a function by taking only the positive square root, or only the negative square root. \\
+----- \\
+Suppose $|A| = n, |B| = m$, how many functions are there from A to B?
+\begin{align}
+  \text{Let } \{a_1, a_2, a_3, \ldots , a_n\} then \nonumber \
+  f(a_1) & \text{has m possible values} \nonumber \
+  f(a_2) & \text{has m possible values} \nonumber \
+  f(a_3) & \text{has m possible values} \nonumber \
+  \ldots \nonumber \
+  f(a_n) & \text{has m possible values} \nonumber \
+\end{align}
+So there are $m \times m \times m \times \ldots \times m = m^n = |B|^{|A|}$ possible
+functions from A to B. \\
+Eg: $|A|=5, |B| = 3$,  \# $f: A \to B = 3^5 = 243$
+
+\section{Properties of functions}
+\label{sec:PropertiesOfFunctions}
+A function can have several properties, namely they are
+\begin{enumerate}
+  \item Injectivity - a function, $f$ where the domain is a set, $A$. The
+  function is \emph{injective} if for all $a$ and $b$ in $A$, if $f(a) = f(b)$,
+  then $a = b$. That is to say $f(a) = f(b) \Rightarrow a = b$. By the same
+  token, if $a \neq b \Rightarrow f(a) \neq f(b)$.
+  
+  \item Surjectivity - a function whose image is equal to it's codomain.
+  $f: A \to B$ if $\forall b \in B \exists a \in A$ where $f(a) = b$. They are
+  sometimes denoted by a double-headed right arrow, $f: A \twoheadrightarrow B$.
+  
+  \item Invertability - a function which inverts or undoes a set rather than
+  individual elements from the set. $f: A \to B$, $f^{-1} B \to A$.
+\end{enumerate}
+
+\subsection{Injectivity}
+Definition: a function $f: A\ to B$ is \emph{one-to-one} or \emph{injective} iff
+$f(x_1) = f(x_2) \to x_1 = x_2$ (or, the y-values are unique) \\
+\\
+Example: \\
+Consider $f:$ DMTH137 $\to$ X5B.T1. \\
+f is one-to-one, otherwise people are sitting in the same seat.\footnote{which
+may or may not be desirable depening on you like your seating} \\
+\\
+Example: \\
+Consider $f: \mathbb{N} \to \mathbb{N}$, $f(x) = 2x$. \\
+is $f$ one-to-one? \\
+Suppose $f(x_1) = f(x_2)$, then $2x_1 = 2x_2$ so $x_1 = x_2$ hence $f$ is one-to-one. \\
+ \\
+Example: \\
+Consider $f: \mathbb{Z} \to \{0,1\}$. $f(x) = 0$ if x is even, $f(x) = 1$ if x is odd \\
+
+$f$ is not one-to-one $\because f(1) = f(x) = 1$ and $f(2) = f(4) = 0\ldots$ etc \\
+\\
+We have an infinite domain, but a finite codomain, so f cannot be 1-1. \\
+\\
+Example: \\
+Consider $f: \mathbb{R} \to \mathbb{R}$, $f(x) = x^2$ \\
+\\
+Suppose $f(x_1) = f(x_2)$ then $x_1^{2} = x_2^{2}$ \\
+$x_1^2 - x_2^2 = 0$ \\
+$(x_1 - x_2)(x_1 + x_2) = 0$ so $x_1 = x_2 or x_1 = -x_2$ \\
+hence $f$ is not one-to-one. \\
+
+\subsection{Surjectivity}
+A function $f: A \to B $ is \emph{onto} or \emph{surjective} if $\forall y \in B, \exists x \in A$
+such that $y = f(x)$ \footnote{ie range f = codomain f}
+
+% TODO: xypic this
+%  .    == >  .
+%  .    == >  .
+%  .    == >  .
+%             .
+%  A          B
+TODO: diagram \\
+Example: $f(x) = 0$ if x is even, $=1$ if odd, $f: \mathbb{Z} \to \{0,1\}$. \\
+\\
+The range of $f = \{0,1\} = $ codomain $f$ \\
+$\therefore$ f is surjective. \\
+\\
+Example: $f:$DMTH137 $\to$ X5B.T1 \\
+Not surjective since there are empty seats \footnote{Fran had a sad face when she said this.}
+\begin{align}
+  f: A \to B \text{is onto if} \forall y \in B \\
+  \exists x \in A \text{such that} y = f(x) \\
+  \text{range = codomain}
+\end{align}
+The easiest way to decide if something is surjective is to consider the range.
+Example:
+\begin{align}
+  f: \mathbb{R} \to \mathbb{R}, f(x) = x^2 \\
+  \text{range} f = \{ y \in \mathbb{R} | y \geq 0 \} \\
+  \text{but codomain} f = \mathbb{R} \\
+  \therefore f \text{is not surjective}
+\end{align}
+On the other hand, $g: \mathbb{R} \to \{x \in \mathbb{R} | x \geq 0 \}$ then $g(x) = x^2$
+is surjective. Here we have chosen the codomain to be exactly the range (image) of $f$.
+
+\begin{align}
+  f: \mathbb{Z}, f(x) = x^2 \\
+  f \text{is not surjective} \because \text{range $7 \in \mathbb{N}$ but there is no $x \in \mathbb{Z}$ such that $f(x) = 7$}
+\end{align}
+
+\subsection{Invertability}
+A function $f: A \to B$ is \emph{invertible} if it is \emph{both one-to-one and
+surjective}. In this case, we can define an inverse function:
+\begin{align}
+  f^{-1} : B \to A \text{such that} x = f^{-1} = y \\
+  \forall x \in A, y \subseteq B
+\end{align}
+
+%      f ==>
+%  .  <===>   .
+%  .  <===>   .
+%  .  <===>   .
+%     <== f^{-1}
+%  A          B
+
+Observe that for an invertable function $f: A \to B$ if is surjective so range $f = $ codomain $f = B$.
+$x \forall y \subseteq B \exists x \in A$ with $y = f(x)$
+$f$ is one-to-one, so each such $x$ is unique, ie $y = f(x)$ has a unique solution. As this is
+true $\forall y \subseteq B$ then we can always find $x$ such that $y = f(x)$ \\
+ie $f^{-1}$ exists.\\
+\\
+Example:\\
+Consider $f: \mathbb{N} \to \mathbb{N}, f(x) = x$
+
+% TODO:
+% Linear graph - y = x, but only the data points from 0 to 5
+See TODO:
+\\
+Is $f$ invertable?: \\
+Is $f$ one-to-one? $f(x_1) = f(x_2) \to x_1 = x_2 \therefore$ yes. \\
+Is $f$ surjective? range $f = \mathbb{N}$ Yes. \\
+\\
+Because $f$ is surjective and one-to-one, it is invertable.\\
+\\
+\\
+Example: \\
+Consider: $g: \mathbb{N} \to \mathbb{Z}, g(x) = x$ \\
+Is $g$ is one-to-one? Yes.
+Range $g = \{y \in \mathbb{Z} | y \geq 0\} = \mathbb{N}$
+So $g$ is not surjective. Hence $g$ is not invertable.
+\\
+\\
+Example:\\
+Let $A = \{1,2,3,4\} = B$ \\
+$f: A \to B$ \\ 
+$1 \to 3$ one-to-one
+$2 \to 1$ surjective since range f=3
+$3 \to 4$ hence f is invertable
+$4 \to 2$
+
+$f^{-1}: B \to A$ \\
+$1 \to 2$
+$2 \to 4$
+$3 \to 1$
+$4 \to 3$
+
+Analogy to SQL, consider the table: \\
+\begin{table}[!htb]
+\begin{tabularx}{\linewidth}{| c c c c c c c c c c |}
+\hline
+  SID      & Name    & A1 & A2 & A3 & A4 & A5 & T1 & T2 & Q \\
+\hline
+  41963539 & Adam    &  4 &  5 &  - &  - &  - &  - &  - & - \\
+  12345678 & Michael &  5 &  4 &  - &  - &  - &  - &  - & - \\
+  87654321 & Gareth  &  4 &  5 &  - &  - &  - &  - &  - & - \\
+  93536914 & Tor     &  5 &  4 &  - &  - &  - &  - &  - & - \\
+\hline
+\end{tabularx}
+\end{table}
+``SELECT SID FROM DMTH137;'' \\
+Represents a function on the database.\\
+Let $Q:A \to B,  A = \{SID\}, B=\{A1\}$
+Define $Q$ as ``SELECT SID FROM DMTH137 WHERE A1 = 5;'' \\
+$B = \{0,1,2,3,3,4,5\}$ \\
+$Q$ is not one-to-one, but is probably surjective as long as someone got each
+of these marks. \\
+\\
+Suppose now we wanted to store the student data. The domain is the SID, and
+the codomain is amount of space allocated to storing the data.\\
+
+\subsection{Number of Functions on a Set}
+Number of functions $f: A \to B$ is $|B|^{|A|}$. Now suppose that A and B are
+finite sets.\footnote{The vertical bars represent the cardinality of the set}.\\
+\\
+Number of one-to-one functions:
+\begin{align}
+  \text{Let} |A| = m, |B| = n \\
+  m > n \text{none}
+  m \leq n \left\{
+    \begin{array}{l l}
+      \text{n choices for} & \quad f(x_1) \\
+      \text{n-1 choices for} & \quad f(x_2) \\
+      \text{n-2 choices for} & \quad f(x_3) \\
+      \ldots
+      \text{n-m choices for} & \quad f(x_m) \\
+    \end{array}
+    \right. \\
+  n(n-1)(n-2)\ldots(n-m) = \frac{n!}{(n-m)!}
+\end{align}
+
+So the number of surjective functions:
+\begin{align}
+  m & < n: \text{none} & \\
+  m & \geq n: \sum_{i=0}^{n}(-1)^{i}(n-i)^{n}(n-i)^{m} & \text{will be done later}
+\end{align}
+
+Number of invertable functions:
+\begin{align}
+  \text{We need a one-to-one} & (m \leq n )\\
+  \text{and} & \nonumber \\
+  \text{surjective} & (m \geq n) \\
+\end{align}
+The number of functions is the same as the number of ways of arranging $n$ objects
+(elements)\footnote{this is called a \emph{permutation}}.
+
+n choices for first element
+n-1 choices for 2nd element
+n-2 choices for 3rd element
+\ldots
+$n(n-1)(n-2)\ldots(2)(1) = n!$
+n! invertable functions.
+
+\subsection{Infinite sets}
+For functions on infinite sets, we can still consider cardinality.
+
+\begin{align}
+  \# f: A \to B, = |B|^{|A|} \\
+  f: \mathbb{Z} \to \mathbb{N} &
+   & f(0) = 0 \\
+   & f(1) = 1 \\
+   & f(-1) = 2 \\
+   & f(2) = 3 \\
+   & f(-2) = 4 \\
+   & \ldots
+\end{align}
+
+We can list all of $\mathbb{Z}$ in one-to-one correspondance with $\mathbb{N}$.
+This means that $|\mathbb{Z}| = |\mathbb{N}|$. We can do the same sort of thing
+to shoq that $|\mathbb{Q}| = |\mathbb{N}|$. We can't find a function for
+$g: \mathbb{R} \to \mathbb{N}$ that is one-to-one and surjective, so
+$|\mathbb{R}| \neq |\mathbb{N}|$.
+
+\section{Functions Composites}
+Suppose we were to take a set, $A$, and apply the function $f$ to form
+set $B'$\footnote{using the prime notation to denote $B$ is not actually a
+defined set, but a generated set}, which was then applied to function $g$:
+Suppose $f: A \to B, g: B \to C$. \\
+\begin{align}
+  \text{Let} x \subseteq A, y \in B, z \in C \\
+\end{align}
+
+[ A ] == f ==> [ B  ] == g ==> [ C ]
+  A            [ B' ]
+
+B' is the range of f, so the domain of g has been restricted to B'.
+
+We have $f(x) = y, g(y) = B$ \\
+so $z = g(y) = g(f(x))$
+
+The notation is as follows:  $z = g,f$ \\
+and \\
+$g \circ f: A \to C$ \\
+We need range $f \subseteq$ domain $g$

@@ -1,0 +1,131 @@
+%-----------------------------------------------------------------------------%
+%- Networks :: Undirected and Directed Graphs --------------------------------%
+%-----------------------------------------------------------------------------%
+\chapter{Undirected and Directed Graphs}
+\label{chap:UndirectedAndDirectedGraphs}
+We are used to graphs are often used to describe functions such as $y = f(x)$.
+We will not be using them in DMTH137.
+
+It is important to note that a graph is a collection of points called
+``\emph{vertices}'' and lines or connections which join them called
+``\emph{edges}''.
+A vertex can represent a piece of information and the edge represents how they
+are connected.
+Example: A vertex represents people and the edges represent the degrees of
+separation to which they know eachother.
+\\
+Example: Each vertex represents a town and the edge represents the distance
+between each town.
+\\
+\emph{Edges must join two distinct vertices}. A graph with loops allows an edge
+to join a vertex to itself. (If you have had Cisco switching experience: compare to the
+packet storm created in a switched network without spanning tree protocol
+implemented).
+\\
+There are two types of graphs we look at in DMTH137:
+\begin{enumerate}
+  \item Directed graphs
+  \item Undirected graphs
+\end{enumerate}
+
+A directed graph has arrows along the edges to indicate the flow of the
+direction. Undirected graphs have no arrows. An arrow may point one way, the
+opposite way, or double arrows to indicate bidirectionality.
+
+% TODO: include example of directed graph ( ->, <-, <-> )
+
+% TODO: include example of undirected graph 
+
+Sometimes a graph (be it directed or undirected) will have a number or
+\emph{weight} with an edge, and is written next to the edge itself.
+
+% TODO: include example of weighted graph.
+
+In terms of language, we say ``Vertex A is adjacent to Vertex B if there is an
+edge from A to B''.
+
+\section{Equivalence in Graphs}
+How do we know when two graphs are the same graph?
+\\
+When the vertices in one graph, GraphA are able to be translated to a second
+graph, GraphB such that both sets of vertices are joined in the same way.
+$ A-> (B,C,D) $ % TODO: let this be a messy graph of spaghetti.
+$ 1-> (2,3,4) $ % TODO: let this one look like Bruce Schneir's alphabet soup
+                % (through his eyes)
+
+There is only one graph with a single vertex:
+% TODO: draw a single vertex
+\begin{tikzpicture}
+\end{tikzpicture}
+
+
+2 Vertices:
+% TODO: draw 2 points
+% TODO: draw 2 points connected
+
+3 vertices:
+% TODO: draw 3 points
+% TODO: draw 3 points with 2 points connected
+% TODO: draw 3 points with 3 points connected
+
+4 vertices:
+% TODO: draw 4 points
+% TODO: draw 4 points with 2 points connected
+% TODO: draw 4 points with 3 points connected 
+  % TODO: draw 4 points with 3/4 box
+  % TODO: draw 
+% TODO: draw 4 points with 4 points connected
+  % TODO: draw 4 points as box
+  % TODO: draw 4 points with 3/4 box and 1 diagonal
+
+% TODO: just refer to the photos...
+
+\section{Complete graph}
+
+$K_n$ - the complete graph of n vertices is the graph of n vertices
+where every pair of vertices is adjacent
+
+$K_3$ (3 points; draw a triangle); 3 edges
+$K_4$ (4 points; draw a square and a bend); 5 edges
+$K_5$ (5 points; draw a pentagram in a pentagon); 10 edges
+
+\section{Bipartite graph}
+A bipartite graph is a graph where the vertices are arranged into two groups or
+areas.
+% TODO: refer to photos
+$K_(n,m)$
+
+$K_(3,4)$ (a graph in 2 parts) % bipartite
+
+$K_(3,2)$
+
+\section{Planar Graphs - Euler's Formulae}
+A graph is said to be \emph{planar} if it can be drawn on a plane so that edges
+do not cross. The formula to determine if a graph is planar or not is denoted by
+\begin{align}
+  V + F - E & = 1
+\end{align}
+Where $V$ is the number of vertices, $F$ is the number of faces, and $E$ is the
+number of edges.
+\\
+A \emph{face} in a graph is essentially a circuit between arbitrary vertices.
+\\
+If a graph can be drawn on a sphere where it's edges do not cross, we can use
+the formula to partly determine if it is spherical planar:
+\begin{align}
+  V + F - E & = 2
+\end{align}
+The second step is to compare the average number of edges per face and compare
+it to the smallest number of edges per face:
+\begin{align}
+  \frac{2E}{F} & = \text{avg number of faces}
+\end{align}
+If the average number of faces is less than the smallest number of faces, then
+the graph is not spherical planar.
+
+The final step is to examine the girth. The \emph{girth} of a graph is the
+shortest circuit. If a connected graph has V vertices, E edges and a girth of $g$ and
+\begin{align}
+  \frac{2E}{2+E-v} < g
+\end{align}
+Then the graph is not planar.

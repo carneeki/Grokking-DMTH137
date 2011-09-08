@@ -1,0 +1,100 @@
+%-----------------------------------------------------------------------------%
+%- Greatest Common Divisors and Least Common Multiples -----------------------%
+%-----------------------------------------------------------------------------%
+\chapter{Greatest Common Divisors and Least Common Multiples}
+\label{chap:GreatestcommonDivisorAndLeastCommoonMultiples}
+
+\section{Divisibility}
+\label{sec:Divisibility}
+We say that ``$a$ divides $b$'' or ``$b$ is divisible by $a$'' if $b$ is a
+multiple of $a$. The symbol to represent this we use a vertical bar.
+\begin{align}
+   a|&b  &~ \text{``a divides b''} & \\
+   5∤&11 &~ \text{``5 does not divide 11''} & \\
+  27|&0  &~ \text{``27 divides 0. (Think about $\frac{0}{27}$)''} & \\
+   0|&0  &~ \text{``0 divides 0''} & \\
+   0∤&6
+\end{align}
+Amongst the natural numbers $\mathbb{N} = \{0, 1, 2, 3, \ldots\}$, 0, 1 are
+special. For the others, they are either prime or composite. \emph{Primes} are
+divisible by exactly 2 numbers, themselves and 1. \emph{Composittes} are
+divisible by numbers other than 1 and themselves.\footnote{1 is neither
+composite nor prime. It is called \emph{the unit}.}
+
+Example:\\
+$\{2, 5, 7, 11, 13, 17, 19, 23 \}$ are all prime numers
+$\{0,4,6,8,9,10,12,14,15,16,18,20,21,22\}$ are all composite numbers\\
+\\
+How many prime numbers are there? Infinitely many.\\
+Proof:
+\begin{align}
+  \text{Suppose there were only finitely many primes:} \\
+  S = \{P_1, P_2, P_3, \ldots P_n \} \\
+  \text{Consider} \\
+  P_1 \times P_2 \times P_3 \ldots \times P_n + 1 & = \ldots \\
+   & = \ni S \\
+  \text{Is not in S, so it cannot be a prime. So it must have a prime factor.
+  But, none of the primes divide it, because they all leave a remainder of 1.
+  So it cannot be composite either.} \\
+  & \therefore \text{a contradiction.} \\
+  & \Rightarrow \text{the set of primes must be infinite.}
+\end{align}
+
+The probability of a large number being prime is approximately $\frac{1}{log_n}$.
+
+\section{Common Factors \& Greatest Common Factor}
+What are the common factors of $28, 164$? \\
+\\
+Factors of $28 = \{ 1,2,4,7,14,28 \}$ \\
+Factors of $164 = \{1, 2, 4, 41, 82, 164 \}$ \\
+\\
+The common factors are $\{1,2,4\}$ and the greatest common factor is $4$. \\
+\\
+What is the greatest common factor of $1234$ and $5762$?\\
+\\
+Doing many divisions is computationally costly and time consuming. We need a
+better way to make this computation feasible.\\
+\\
+By using prime factors (ie factors of a composite number which are prime), we
+can determine composite factors much faster:
+\begin{align}
+  164 & = 2 * 82 \\
+      & = 2*2*41 \\
+      & = 2^2 * 41 \\
+\end{align} 
+or
+\begin{align}
+  2^0 * 41^0 & = 1 \\
+  2^1 * 41^0 & = 2 \\
+  2^2 * 41^0 & = 4 \\
+  2^0 * 41^1 & = 41 \\
+  2^1 * 41^1 & = 82 \\
+  2^2 * 41^1 & = 164
+\end{align}
+So $3^2 * 5^3 * 7^4$ has $3*4*5 = 60$ facotrs\\
+\\
+So factoring both numbers into products of primes will let us find the factors
+and common factors easily and so might be a good way to go.\\
+\\
+GCF of $3^2 * 11^4 * 17^3$ is $8! = 1*2*3*4*5*6*7$ is easily worked out:
+\begin{align}
+  8! & = 2* 3 * 2^2 * 5 * 7 \\
+     & = 2^4 * 3^2 * 5 * 7
+\end{align}
+So the greatest common factor is $3^2 = 9$.\\
+\\
+GCF of $2^5 * 3^2 * 11^4 * 17^3$ is $8! = 1*2*3*4*5*6*7$ is easily worked out:
+\begin{align}
+  8! & = 2* 3 * 2^2 * 5 * *2 * 3* 7 \\
+     & = 2^4 * 3^2 * 5 * 7
+\end{align}
+So the greatest common factor is $2^4 * 3^2 = 9 * 18 = 144$.\\
+\\
+However, this is still computationally unfeasable for large numbers as it is
+prohibitively time consuming so this method is also impractical, but, the
+ancient Greeks knew how to do it easily.\footnote{This ancient Greek dude called
+Euclid wrote a computer program in 300BC, but didn't have a PC to run it on so
+he used a sandbox.}
+
+\section{Euclid's Algorithm}
+\label{sec:EuclidsAlgorithm}

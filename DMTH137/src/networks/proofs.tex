@@ -1,0 +1,76 @@
+%-----------------------------------------------------------------------------%
+%- Networks :: Direct Proofs and Proofs By Contradictions --------------------%
+%-----------------------------------------------------------------------------%
+\chapter{Proofs}
+\label{chap:Proofs}
+
+\section{Proof by Induction}
+\quotation{``Mathematical induction proves that we can climb as high as we like
+on a ladder, by proving that we can climb onto the bottom rung (the basis) and
+that from each rung we can climb up to the next one (the induction)'' -- Donald
+Knuth, Concrete Mathematics}
+Question: How can we prove an infinite number of things? ie How can you prove
+a formula is always true? \\
+The definition of $\mathbb{N}$ comes to our rescue; it includes the statement:
+if $S \in \mathbb{N}$ and $0 \in S$ and $\forall n \in S \Rightarrow (n + 1) \in S $
+
+Essentially, if you prove a case for $n$, and the statement remains true
+for $n+1$, then you have formulated a proof by induction.
+
+\section{Proof by Strong induction}
+\label{sec:StrongInduction}
+Strong induction says that we may assume not only that the original statement
+holds, but is true for all cases up to a certain boundary point.\footnote{It's
+sort of like turbo-charged version of induction, it works similarly to
+induction, but proves a wider scope and specifies a boundary.}
+
+If you prove a case for $n$ and you prove it for \emph{all} $n$ values up to and
+including $m$, then you have formulated a proof by strong induction.
+
+Let $S \in \mathbb{Z}$ and suppose that $0 \in S$ and $(forall n \in \mathbb{Z}, (m < n) \Rightarrow n \in S) \Rightarrow n \in S$ \\
+\\
+Then $S = N$ \\
+\\
+Example: Prove that every positive integer $> 2$ is the product of primes of 1
+or more prime numbers.\\
+\\
+Let $S = \subseteq \{ \mathbb{N} | n+2$ is the product of 1 or more primes
+\begin{align}
+  0 \in S && \text{Prove zero is in S}\\
+  2 = 2 && \\
+  \text{Prove n is in S} && \\
+  \text{Suppose that} S \in && \\
+  \text{I had to debate that} n = S && \\
+  \text{Either} n + 2 \text{is a prime} && \\
+  \text{or} && \\
+  n + 2 && \text{is composite of 2 or more primes} \\
+  (n + 2) & = a \times b & \text{where} (0 < a, b < n+1) \\
+  && n \leq b < n \\
+  \therefore n \in S &&
+\end{align}
+18 = 2 * 9
+   = 2 * 3 * 3 <-- product of primes
+17 = cannot be split because\ldots
+   = it is already a prime (1 * 17)
+
+\section{Proofs by Well Ordering}
+\label{sec:WellOrdering}
+The well ordering principle states that if $S \subseteq \mathbb{N}$ then
+either S is empty or S has a smaller element.\\
+\\
+That is to say, every non-empty subset of the natural numbers has a smallest
+element.
+
+\begin{align}
+  \sum_{r=0}^{n} 4r^{3} & = n^{2}(n+1)^{2} & \\
+%  \text{Let C be the set of counter examples - ie prove that C is empty.} && \nonumber \\
+%  \text{Suppose C wasn't empty, then \epsilon has a smallest element, S.} && \nonumber \\
+%  S \neq 0 \because & \sum_{r=0}^{0} 4r^{2} = 0 = 0^{2} * (0+1) & \\
+%  \text{0 isn't in C, so it cannot be the smallest element of C} &&
+\end{align}
+
+\section{Direct Proofs}
+\label{sec:DirectProofs}
+
+\section{Proofs by Contradictions}
+\label{sec:ProofsByContradictions}
