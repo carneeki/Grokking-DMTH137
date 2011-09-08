@@ -147,9 +147,7 @@ longnamesfirst
 \maketitle
 %
 %\begin{abstract}
-% This document forms the notes for DMTH137 by the author. DMTH137 changed from
-% programming in C++ to programming in Java however the essence of DMTH137
-% syllabus the same. It is about linked data structures. 
+% This document forms the notes for DMTH137 by the author.
 %\end{abstract}
 %
 \section{Introduction}
@@ -1841,6 +1839,187 @@ $\therefore$ f is surjective. \\
 \\
 Example: $f:$DMTH137 $\to$ X5B.T1 \\
 Not surjective since there are empty seats \footnote{Fran had a sad face when she said this.}
+\begin{align}
+  f: A \to B \text{is onto if} \forall y \in B \\
+  \exists x \in A \text{such that} y = f(x) \\
+  \text{range = codomain}
+\end{align}
+The easiest way to decide if something is surjective is to consider the range.
+Example:
+\begin{align}
+  f: \mathbb{R} \to \mathbb{R}, f(x) = x^2 \\
+  \text{range} f = \{ y \in \mathbb{R} | y \geq 0 \} \\
+  \text{but codomain} f = \mathbb{R} \\
+  \therefore f \text{is not surjective}
+\end{align}
+On the other hand, $g: \mathbb{R} \to \{x \in \mathbb{R} | x \geq 0 \}$ then $g(x) = x^2$
+is surjective. Here we have chosen the codomain to be exactly the range (image) of $f$.
+
+\begin{align}
+  f: \mathbb{Z}, f(x) = x^2 \\
+  f \text{is not surjective} \because \text{range $7 \in \mathbb{N}$ but there is no $x \in \mathbb{Z}$ such that $f(x) = 7$}
+\end{align}
+
+\subsubsection{Invertive Functions}
+A function $f: A \to B$ is \emph{invertible} if it is \emph{both one-to-one and
+surjective}. In this case, we can define an inverse function:
+\begin{align}
+  f^{-1} : B \to A \text{such that} x = f^{-1} = y \\
+  \forall x \in A, y \subseteq B
+\end{align}
+
+%      f ==>
+%  .  <===>   .
+%  .  <===>   .
+%  .  <===>   .
+%     <== f^{-1}
+%  A          B
+
+Observe that for an invertable function $f: A \to B$ if is surjective so range $f = $ codomain $f = B$.
+$x \forall y \subseteq B \exists x \in A$ with $y = f(x)$
+$f$ is one-to-one, so each such $x$ is unique, ie $y = f(x)$ has a unique solution. As this is
+true $\forall y \subseteq B$ then we can always find $x$ such that $y = f(x)$ \\
+ie $f^{-1}$ exists.\\
+\\
+Example:\\
+Consider $f: \mathbb{N} \to \mathbb{N}, f(x) = x$
+
+% TODO:
+% Linear graph - y = x, but only the data points from 0 to 5
+See TODO:
+\\
+Is $f$ invertable?: \\
+Is $f$ one-to-one? $f(x_1) = f(x_2) \to x_1 = x_2 \therefore$ yes. \\
+Is $f$ surjective? range $f = \mathbb{N}$ Yes. \\
+\\
+Because $f$ is surjective and one-to-one, it is invertable.\\
+\\
+\\
+Example: \\
+Consider: $g: \mathbb{N} \to \mathbb{Z}, g(x) = x$ \\
+Is $g$ is one-to-one? Yes.
+Range $g = \{y \in \mathbb{Z} | y \geq 0\} = \mathbb{N}$
+So $g$ is not surjective. Hence $g$ is not invertable.
+\\
+\\
+Example:\\
+Let $A = \{1,2,3,4\} = B$ \\
+$f: A \to B$ \\ 
+$1 \to 3$ one-to-one
+$2 \to 1$ surjective since range f=3
+$3 \to 4$ hence f is invertable
+$4 \to 2$
+
+$f^{-1}: B \to A$ \\
+$1 \to 2$
+$2 \to 4$
+$3 \to 1$
+$4 \to 3$
+
+Analogy to SQL, consider the table: \\
+\begin{table}[!htb]
+\begin{tabularx}{\linewidth}{| c c c c c c c c c c |}
+\hline
+  SID      & Name    & A1 & A2 & A3 & A4 & A5 & T1 & T2 & Q \\
+\hline
+  41963539 & Adam    &  4 &  5 &  - &  - &  - &  - &  - & - \\
+  12345678 & Michael &  5 &  4 &  - &  - &  - &  - &  - & - \\
+  87654321 & Gareth  &  4 &  5 &  - &  - &  - &  - &  - & - \\
+  93536914 & Tor     &  5 &  4 &  - &  - &  - &  - &  - & - \\
+\hline
+\end{tabularx}
+\end{table}
+``SELECT SID FROM DMTH137;'' \\
+Represents a function on the database.\\
+Let $Q:A \to B,  A = \{SID\}, B=\{A1\}$
+Define $Q$ as ``SELECT SID FROM DMTH137 WHERE A1 = 5;'' \\
+$B = \{0,1,2,3,3,4,5\}$ \\
+$Q$ is not one-to-one, but is probably surjective as long as someone got each
+of these marks. \\
+\\
+Suppose now we wanted to store the student data. The domain is the SID, and
+the codomain is amount of space allocated to storing the data.\\
+
+\subsubsection{}
+Number of functions $f: A \to B$ is $|B|^{|A|}$. Now suppose that A and B are
+finite sets.\footnote{The vertical bars represent the cardinality of the set}.\\
+\\
+Number of one-to-one functions:
+\begin{align}
+  \text{Let} |A| = m, |B| = n \\
+  m > n \text{none}
+  m \leq n \left\{
+    \begin{array}{l l}
+      \text{n choices for} & \quad f(x_1) \\
+      \text{n-1 choices for} & \quad f(x_2) \\
+      \text{n-2 choices for} & \quad f(x_3) \\
+      \ldots
+      \text{n-m choices for} & \quad f(x_m) \\
+    \end{array}
+    \right. \\
+  n(n-1)(n-2)\ldots(n-m) = \frac{n!}{(n-m)!}
+\end{align}
+
+So the number of surjective functions:
+\begin{align}
+  m & < n: \text{none} & \\
+  m & \geq n: \sum_{i=0}^{n}(-1)^{i}(n-i)^{n}(n-i)^{m} & \text{will be done later}
+\end{align}
+
+Number of invertable functions:
+\begin{align}
+  \text{We need a one-to-one} & (m \leq n )\\
+  \text{and} & \nonumber \\
+  \text{surjective} & (m \geq n) \\
+\end{align}
+The number of functions is the same as the number of ways of arranging $n$ objects
+(elements)\footnote{this is called a \emph{permutation}}.
+
+n choices for first element
+n-1 choices for 2nd element
+n-2 choices for 3rd element
+\ldots
+$n(n-1)(n-2)\ldots(2)(1) = n!$
+n! invertable functions.
+
+\subsubsection{Infinite sets}
+For functions on infinite sets, we can still consider cardinality.
+
+\begin{align}
+  \# f: A \to B, = |B|^{|A|} \\
+  f: \mathbb{Z} \to \mathbb{N} &
+   & f(0) = 0 \\
+   & f(1) = 1 \\
+   & f(-1) = 2 \\
+   & f(2) = 3 \\
+   & f(-2) = 4 \\
+   & \ldots
+\end{align}
+
+We can list all of $\mathbb{Z}$ in one-to-one correspondance with $\mathbb{N}$.
+This means that $|\mathbb{Z}| = |\mathbb{N}|$. We can do the same sort of thing
+to shoq that $|\mathbb{Q}| = |\mathbb{N}|$. We can't find a function for
+$g: \mathbb{R} \to \mathbb{N}$ that is one-to-one and surjective, so
+$|\mathbb{R}| \neq |\mathbb{N}|$.
+
+\subsubsection{Composition of Functions}
+Suppose $f: A \to B, g: B \to C$. \\
+\begin{align}
+  \text{Let} x \subseteq A, y \in B, z \in C \\
+\end{align}
+
+[ A ] == f ==> [ B  ] == g ==> [ C ]
+  A            [ B' ]
+
+B' is the range of f, so the domain of g has been restricted to B'.
+
+We have $f(x) = y, g(y) = B$ \\
+so $z = g(y) = g(f(x))$
+
+The notation is as follows:  $z = g,f$ \\
+and \\
+$g \circ f: A \to C$ \\
+We need range $f \subseteq$ domain $g$
 
 %-----------------------------------------------------------------------------%
 %- Combinatorics: Counting Arguments, Permutations and Combinations
