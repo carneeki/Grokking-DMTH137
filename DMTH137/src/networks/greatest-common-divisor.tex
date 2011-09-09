@@ -96,5 +96,72 @@ ancient Greeks knew how to do it easily.\footnote{This ancient Greek dude called
 Euclid wrote a computer program in 300BC, but didn't have a PC to run it on so
 he used a sandbox.}
 
+\subsection{Recap}
+If we know the prime factorization of $x$ and $y$ it is easy to find the
+greatest common divisor.
+\\
+For example:
+Calculate the GCD of $11!$
+\begin{align}
+     11! & = 1 * 2 * 3 * \ldots * 10 * 11 \\
+  \text{or\ldots} & \\
+         & = 2^8 * 3^4 * 5^2 * 7 * 11 \\
+  (20/6) & = \frac{20* 19 * 18 * 17 * 16 * 15}{6 * 5* 4 * 3 * 2 * 1} \\
+         & = 19 * 17 * 2^3 * 5 = 2^3 * 3 * 5 \\
+  \therefore \text{GCD}(11!, (20/6)) &= 2^3 * 3 * 5 \\
+         & = 120 \\
+  \text{and} \text{LCM}(11!, (20/6)) & = 2^8 * 3^4 * 5^2 * 7 * 11 * 17 * 19 \\
+\end{align}
+
 \section{Euclid's Algorithm}
 \label{sec:EuclidsAlgorithm}
+\begin{enumerate}
+  \item Take the biggest number, and find how many times the smallest number
+  goes into it
+  \item take the remainder
+  \item Take smaller of your two numbers, and find how many times the
+  remainder goes into the smaller number.
+  \item Repeat previous two steps until you have a zero remainder; and the GCD
+  is the smallest non-zero remainder previous to the zero.
+\end{enumerate}
+The last non-zero remainder is the greatest
+\\
+To Find the GCD of (123, 57):
+\begin{align}
+  123 & = 2 * 57 + 9 \\
+   57 & = 6 * 9 + 3 \\
+    3 & = 3 * 3 + 0 \text{look! no remainder!}
+\end{align}
+Note: If we reverse it, we can see that the GCD is a common factor of subsequent
+remainders (3 is a multiple of 3, 6, and 9, as well as our original two
+numbers, 123 and 57).
+\\
+To find the GCD of (11253, 3271):
+\begin{align}
+  11253 & = 3 * 3271 + 1440 \\
+   3271 & = 2 * 1440 + 391 \\
+   1440 & = 3 * 391 + 267 \\
+    391 & = 1 * 267 + 124 \\
+    267 & = 2 * 124 + 19 \\
+    124 & = 6 * 19 + 10 \\
+     19 & = 1 * 10 + 9 \\
+     10 & = 1 * 9 + 1 \\
+      9 & = 1 * 9 + 0 \\
+      \therefore \text{GCD(11253,3271)} & = 1 \\
+      \therefore \text{No common factors}
+\end{align}
+
+It appears to have no real use or importance at first, but is very
+useful in things like cryptography.\footnote{How often does Bruce Schneier come
+up to you and ask you for the GCD between two numbers? Simon Singh has asked me
+only once, in November 2010.}
+
+If $a, b \in \mathbb{Z}$ and $g$ is the GCD, then there are integers $x$ and $y$
+such that $ax + by = g$. Moreover, the equation $ax + by = c$ has solutions in
+$mathbb{Z} \in x,y$ iff $g|c$
+
+Example:
+\begin{align}
+  123x + 57y & = 28 \\
+  \text{where x and y have solutions in integers}
+\end{align}
